@@ -13,5 +13,5 @@
 
 ## List pluggins add
 
-- Formatting null-ls [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
+- Formatting with [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - Rainbow Brackets [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow)
