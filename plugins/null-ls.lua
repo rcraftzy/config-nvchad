@@ -9,9 +9,9 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
-  -- b.formatting.prettier,
-  b.formatting.deno_fmt,
-  -- b.formatting.eslint,
+  -- b.formatting.deno_fmt,
+  b.formatting.prettier,
+  b.formatting.eslint,
   b.diagnostics.eslint,
 
   -- python
@@ -28,4 +28,11 @@ local sources = {
 null_ls.setup {
   debug = true,
   sources = sources,
+  --[[ 
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+      vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()"
+    end
+  end,
+ ]]
 }
