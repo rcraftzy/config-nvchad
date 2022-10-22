@@ -28,13 +28,17 @@ M.mason = {
       "css-lsp",
       "html-lsp",
       "typescript-language-server",
+      "vue-language-server",
       "deno",
       "emmet-ls",
       "json-lsp",
+      "gopls",
 
       -- shell
       "shfmt",
       "shellcheck",
+      "prettier",
+      "eslint_d",
     },
   },
 }
