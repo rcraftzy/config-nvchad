@@ -3,7 +3,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "tsserver", "tailwindcss" }
+local servers = { "html", "cssls", "tsserver" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -55,6 +55,6 @@ lspconfig.emmet_ls.setup {
     },
   },
 }
--- lspconfig.volar.setup{
---   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
--- }
+lspconfig.volar.setup {
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+}
