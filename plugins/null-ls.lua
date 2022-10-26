@@ -11,8 +11,14 @@ local sources = {
   -- webdev stuff
   -- b.formatting.deno_fmt,
   b.formatting.prettier,
-  b.formatting.eslint,
-  b.diagnostics.eslint,
+  b.formatting.eslint_d,
+  -- b.diagnostics.eslint,
+  b.diagnostics.eslint_d.with({
+    -- ignore prettier warnings from eslint-plugin-prettier
+    filter = function(diagnostic)
+      return diagnostic.code ~= "prettier/prettier"
+    end,
+  }),
 
   -- python
   b.formatting.autopep8,
