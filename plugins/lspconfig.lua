@@ -2,19 +2,11 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-
-local servers = { "html", "cssls", "tsserver" }
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
 local util = require "lspconfig/util"
 
-local attach = function(client, bufnr)
+local servers = { "html", "cssls", "tsserver", "volar", "tailwindcss" }
+
+local new_on_attach = function(client, bufnr)
   -- format on save
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -27,8 +19,15 @@ local attach = function(client, bufnr)
   end
 end
 
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
+
 lspconfig.gopls.setup {
-  on_attach = attach,
+  on_attach = new_on_attach,
   cmd = { "gopls", "serve" },
   filetypes = { "go", "gomod" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
@@ -54,7 +53,4 @@ lspconfig.emmet_ls.setup {
       },
     },
   },
-}
-lspconfig.volar.setup {
-  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 }
