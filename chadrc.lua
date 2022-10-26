@@ -6,7 +6,7 @@ local M = {}
 -- example of changing theme:
 
 M.ui = {
-  theme = "tokyonight",
+  theme = "decay",
   hl_override = require "custom.highlights",
   -- transparency = true,
 }
